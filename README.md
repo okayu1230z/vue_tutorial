@@ -321,3 +321,7 @@ App.vue
 ## 宣言的レンダリング
 
 ~ 続く
+
+## 開発環境
+
+[VSCodeでVue.jsのモダンな開発環境を整えよう](https://qiita.com/papi_tokei/items/70ab79e25613fc870c73)を参考にする

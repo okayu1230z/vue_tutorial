@@ -1,47 +1,47 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div>
+    <p>
+      <span :title="message">
+        Hover your mouse over me for a few seconds to see my dynamically bound
+        title!
+      </span>
+    </p>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+    <p :class="{ red: isRed }" @click="toggleRed">
+      This should be red... but click me to toggle it.
+    </p>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <p :style="{ color }" @click="toggleColor">
+      This should be green, and should toggle between green and blue on click.
+    </p>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+export default {
+  data() {
+    return {
+      message: "Hello World!",
+      isRed: true,
+      color: "green",
+    };
+  },
+  methods: {
+    toggleRed() {
+      this.isRed = !this.isRed;
+    },
+    toggleColor() {
+      this.color = this.color === "green" ? "blue" : "green";
+    },
+  },
+};
+</script>
+
+<style>
+.red {
+  color: rgb(255, 0, 0);
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.bold {
+  font-weight: bold;
 }
 </style>
